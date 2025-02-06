@@ -1,21 +1,33 @@
-import express from 'express'
-import cors from 'cors'
-const app = express();
-app.use(cors())
-app.get("/jokes",(req, res)=>{
-    const jokes=[
-        {   
-        id:1,
-        values:"hello mohan"
-        },
-        {
-            id:1,
-            values:"hello world"  
-        }
-    ]
-    res.send(jokes)
+// require('dotenv').config({path:'./env'});
+import dotenv from "dotenv"
+
+import connectDB from "./db/index.js"
+
+dotenv.config({
+    path:'./env'
 })
-const port = process.env.PORT || 5000 ;
-app.listen(port,()=>{
-    console.log(`server start at ${port}`)
-});
+
+ connectDB();
+
+
+
+
+// import express from "express"
+
+// const app = express();
+
+// ;( async()=>{
+//     try {
+//       await mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`) 
+//       app.on("error",(error)=>{
+//         console.log("ERRR", error);
+//         throw error  
+//     })  
+//     app.listen(process.env.PORT,()=>{
+//         console.log("Server is live")
+//     })
+//     } catch (error) {
+//         console.error("ERROR", error)
+//         throw err
+//     }
+// })()
